@@ -1,0 +1,540 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="hero-section">
+
+    <div class="hero-content">
+
+        <h1>
+            REFAC-COM
+        </h1>
+
+        <p class="hero-text">
+            Réseau des Femmes Actrices du Changement Communautaire.
+            Une organisation engagée pour le leadership féminin,
+            l’autonomisation économique, la participation citoyenne
+            et le développement inclusif des communautés.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/projects/" class="btn-primary">
+                Découvrir nos projets
+            </a>
+
+            <a href="/contact/" class="btn-secondary">
+                Nous contacter
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="mission-section">
+
+    <h2>
+        Notre mission
+    </h2>
+
+    <p>
+        REFAC-COM œuvre pour une société inclusive où
+        les femmes, les jeunes et les communautés
+        vulnérables participent activement au développement
+        durable à travers des initiatives innovantes,
+        solidaires et transformatrices.
+    </p>
+
+</section>
+
+<section class="stats-section">
+
+    <div class="stat-card">
+
+        <h3>+500</h3>
+
+        <p>Femmes impactées</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>+20</h3>
+
+        <p>Communautés accompagnées</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>+15</h3>
+
+        <p>Projets communautaires</p>
+
+    </div>
+
+</section>
+
+<section class="domain-section">
+
+    <h2>
+        Nos domaines d’intervention
+    </h2>
+
+    <div class="domain-grid">
+
+        <div class="domain-card">
+
+            <h3>
+                Leadership féminin
+            </h3>
+
+            <p>
+                Promotion de la participation
+                citoyenne et du leadership transformateur.
+            </p>
+
+        </div>
+
+        <div class="domain-card">
+
+            <h3>
+                Autonomisation économique
+            </h3>
+
+            <p>
+                Renforcement des capacités et soutien
+                aux activités génératrices de revenus.
+            </p>
+
+        </div>
+
+        <div class="domain-card">
+
+            <h3>
+                Droits humains
+            </h3>
+
+            <p>
+                Sensibilisation communautaire et
+                plaidoyer pour l’égalité et la justice sociale.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="call-section">
+
+    <h2>
+        Ensemble pour un changement durable
+    </h2>
+
+    <p>
+        Rejoignez REFAC-COM dans ses actions
+        communautaires pour un avenir plus inclusif.
+    </p>
+
+    <a href="/contact/" class="btn-primary">
+        Devenir partenaire
+    </a>
+
+</section>
+
+<section class="partners-section">
+
+    <h2>Nos partenaires</h2>
+
+    <div class="partners-slider">
+
+    <div class="partners-track">
+
+        {% for partenaire in partenaires %}
+
+            <div class="partner-card">
+
+                <img src="{{ partenaire.logo.url }}"
+                     alt="{{ partenaire.nom }}">
+
+            </div>
+
+        {% endfor %}
+
+        {% for partenaire in partenaires %}
+
+            <div class="partner-card">
+
+                <img src="{{ partenaire.logo.url }}"
+                     alt="{{ partenaire.nom }}">
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</section>
+
+<section class="newsletter-section">
+
+    <h2>
+        Abonnez-vous à notre newsletter
+    </h2>
+
+    <p>
+        Recevez nos dernières actualités,
+        activités et publications.
+    </p>
+
+    {% if success_newsletter %}
+
+    <div class="success-message">
+
+        Votre abonnement a été effectué avec succès.
+
+    </div>
+
+{% endif %}
+
+{% if erreur_newsletter %}
+
+    <div class="error-message">
+
+        Renseignez obligatoirement votre email.
+
+    </div>
+
+{% endif %}
+
+    <form method="POST" class="newsletter-form">
+
+        {% csrf_token %}
+
+        <input type="email"
+               name="email"
+               placeholder="Votre adresse email"
+               required>
+
+        <button type="submit">
+
+            S’abonner
+
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}
+
+/* HERO SECTION */
+
+.hero-section {
+
+    height: 100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.55),
+    rgba(0,0,0,0.55)),
+    url('/static/images/logo.png');
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+
+    padding: 20px;
+
+}
+
+.hero-content {
+
+    max-width: 850px;
+
+    animation: fadeInUp 1s ease;
+
+}
+
+.hero-content h1 {
+
+    font-size: 64px;
+
+    margin-bottom: 25px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+}
+
+.hero-content p {
+
+    font-size: 24px;
+
+    line-height: 1.7;
+
+    margin-bottom: 40px;
+
+}
+
+/* BOUTONS */
+
+.hero-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+}
+
+.btn-primary,
+.btn-secondary {
+
+    padding: 16px 35px;
+
+    border-radius: 50px;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    transition: 0.4s;
+
+}
+
+.btn-primary {
+
+    background: white;
+
+    color: #0b4f84;
+
+}
+
+.btn-primary:hover {
+
+    transform: translateY(-5px);
+
+}
+
+.btn-secondary {
+
+    border: 2px solid white;
+
+    color: white;
+
+}
+
+.btn-secondary:hover {
+
+    background: white;
+
+    color: #0b4f84;
+
+}
+
+/* STATS */
+
+.stats-section {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 30px;
+
+    padding: 80px 10%;
+
+    background: #f5f7fa;
+
+}
+
+.stat-card {
+
+    background: white;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+
+    transition: 0.4s;
+
+}
+
+.stat-card:hover {
+
+    transform: translateY(-10px);
+
+}
+
+.stat-card h2 {
+
+    font-size: 52px;
+
+    color: #0b4f84;
+
+    margin-bottom: 15px;
+
+}
+
+/* DOMAINES */
+
+.domains-section {
+
+    padding: 100px 10%;
+
+}
+
+.domains-section h2 {
+
+    text-align: center;
+
+    font-size: 52px;
+
+    color: #0b4f84;
+
+    margin-bottom: 60px;
+
+}
+
+.domains-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 30px;
+
+}
+
+.domain-card {
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 25px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+
+    transition: 0.4s;
+
+    text-align: center;
+
+}
+
+.domain-card:hover {
+
+    transform: translateY(-10px);
+
+}
+
+.domain-card h3 {
+
+    font-size: 32px;
+
+    color: #0b4f84;
+
+    margin-bottom: 20px;
+
+}
+
+/* MISSION */
+
+.mission-section {
+
+    background: #f5f7fa;
+
+    padding: 100px 10%;
+
+    text-align: center;
+
+}
+
+.mission-section h2 {
+
+    font-size: 52px;
+
+    color: #0b4f84;
+
+    margin-bottom: 30px;
+
+}
+
+.mission-section p {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    font-size: 24px;
+
+    line-height: 1.8;
+
+}
+
+/* ANIMATION */
+
+@keyframes fadeInUp {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(40px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .hero-content h1 {
+
+        font-size: 42px;
+
+    }
+
+    .hero-content p {
+
+        font-size: 20px;
+
+    }
+
+}

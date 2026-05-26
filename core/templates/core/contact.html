@@ -1,0 +1,72 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<section class="contact-section">
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+
+            <h1>Contactez REFAC-COM</h1>
+
+            <p>
+                Nous restons disponibles pour toute collaboration,
+                partenariat, projet ou demande d’informations.
+            </p>
+
+            <div class="info-box">
+                <p>📍 Porto-Novo, Bénin</p>
+
+                <p>📞 +229 01 69 09 50 71</p>
+
+                <p>✉️ refaccong@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="contact-form">
+
+            <form method="POST">
+
+                {% if success %}
+
+<div class="success-message">
+    Votre message a été envoyé avec succès.
+</div>
+
+{% endif %}
+
+    {% csrf_token %}
+
+                <input type="text"
+       name="nom"
+       placeholder="Votre nom">
+
+                <input type="email"
+       name="email"
+       placeholder="Votre adresse email">
+
+                <input type="text"
+       name="sujet"
+       placeholder="Sujet">
+
+                <textarea
+    rows="6"
+    name="message"
+    placeholder="Votre message">
+</textarea>
+
+                <button type="submit">
+                    Envoyer le message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

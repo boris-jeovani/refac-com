@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>REFAC-COM</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+    <div class="logo">
+        <img src="{% static 'images/logo.png' %}" alt="REFAC-COM">
+    </div>
+
+    <!-- Bouton menu mobile -->
+
+    <div class="menu-toggle" id="menu-toggle">
+    ☰
+</div>
+
+    <!-- Liens -->
+
+    <ul class="nav-links" id="nav-links">
+
+        <li><a href="/">Accueil</a></li>
+
+<li><a href="/about/">À propos</a></li>
+
+<li><a href="/activities/">Nos activités</a></li>
+
+<li><a href="/projects/">Nos projets</a></li>
+
+<li><a href="/actualites/">Actualités</a></li>
+
+<li><a href="/gallery/">Galerie</a></li>
+
+<li><a href="/contact/">Contact</a></li>
+
+    </ul>
+
+</nav>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+            <h3>REFAC-COM</h3>
+
+            <p>
+                Réseau des Femmes Actrices du Changement Communautaire.
+                Organisation engagée pour le leadership féminin,
+                l’autonomisation et le développement inclusif.
+            </p>
+        </div>
+
+        <div class="footer-box">
+            <h3>Liens rapides</h3>
+
+         <ul>
+    <li><a href="{% url 'home' %}">Accueil</a></li>
+    <li><a href="{% url 'about' %}">À propos</a></li>
+    <li><a href="{% url 'activities' %}">Activités</a></li>
+    <li><a href="{% url 'projects' %}">Projets</a></li>
+    <li><a href="{% url 'actualites' %}">Actualités</a></li>
+    <li><a href="{% url 'gallery' %}">Galerie</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+</ul>
+        </div>
+
+        <div class="footer-box">
+            <h3>Contact</h3>
+
+            <p>📍 Porto-Novo, Bénin</p>
+
+            <p>📞 +229 01 69 09 50 71</p>
+
+            <p>✉️ refaccong@gmail.com</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 REFAC-COM — Tous droits réservés.</p>
+    </div>
+
+</footer>
+
+<!-- BOUTON WHATSAPP -->
+
+<a href="https://api.whatsapp.com/send?phone=2290169095071&text=Bonjour%20REFAC-COM,%20je%20souhaite%20obtenir%20des%20informations."
+   class="whatsapp-btn">
+
+    💬
+
+</a>
+
+<script>
+
+const menuToggle = document.getElementById("menu-toggle");
+
+const navLinks = document.getElementById("nav-links");
+
+menuToggle.addEventListener("click", () => {
+
+    navLinks.classList.toggle("active");
+
+});
+
+</script>
+
+</body>
+
+</html>

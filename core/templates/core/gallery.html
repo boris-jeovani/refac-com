@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<section class="gallery-section">
+
+    <h1>Galerie</h1>
+
+    <p class="gallery-intro">
+        Découvrez quelques images de nos activités, projets et actions communautaires.
+    </p>
+
+    <div class="gallery-container">
+
+        {% for image in images %}
+
+        <div class="gallery-card">
+
+            <img src="{{ image.image.url }}" alt="{{ image.titre }}">
+
+            <h3>{{ image.titre }}</h3>
+
+        </div>
+
+        {% empty %}
+
+        <p>Aucune image disponible pour le moment.</p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

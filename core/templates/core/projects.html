@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>Nos projets</h1>
+
+    <p>
+        REFAC-COM développe et accompagne des projets
+        communautaires durables dans plusieurs domaines
+        stratégiques.
+    </p>
+
+    <div class="projects-container">
+
+   <div class="projects-container">
+
+    {% for projet in projets %}
+
+    <div class="project-card">
+
+        {% if projet.image %}
+
+<img class="project-image"
+     src="{{ projet.image.url }}"
+     alt="Projet REFAC-COM">
+
+{% endif %}
+
+        <h3>{{ projet.titre }}</h3>
+
+        <p>{{ projet.description }}</p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+    <p>
+        Nos projets sont réalisés en synergie avec
+        les communautés, les partenaires techniques
+        et financiers ainsi que les acteurs institutionnels.
+    </p>
+
+</section>
+
+{% endblock %}
+
+{% for projet in projets %}
+
+<div class="project-card">
+
+    {% if projet.image %}
+        <img src="{{ projet.image.url }}"
+             alt="{{ projet.titre }}">
+    {% endif %}
+
+    <h3>{{ projet.titre }}</h3>
+
+    <p>{{ projet.description }}</p>
+
+</div>
+
+{% endfor %}

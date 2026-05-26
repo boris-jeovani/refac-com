@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="project-card">
+
+        {% if actualite.image %}
+
+        <img src="{{ actualite.image.url }}"
+             alt="{{ actualite.titre }}">
+
+        {% endif %}
+
+        <h1>
+            {{ actualite.titre }}
+        </h1>
+
+        <small>
+            Publié le
+            {{ actualite.date_publication }}
+        </small>
+
+        <p>
+            {{ actualite.contenu }}
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

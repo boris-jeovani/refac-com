@@ -1,0 +1,106 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>
+        Actualités
+    </h1>
+
+    <p>
+        Découvrez les dernières activités,
+        publications et actions de REFAC-COM.
+    </p>
+
+    <form method="GET" class="search-form">
+
+    <input type="text"
+           name="recherche"
+           placeholder="Rechercher une actualité..."
+           value="{{ recherche }}">
+
+    <button type="submit">
+
+        Rechercher
+
+    </button>
+
+</form>
+
+    <div class="projects-container">
+
+        {% for actualite in actualites %}
+
+        <div class="project-card">
+
+            {% if actualite.image %}
+
+            <img src="{{ actualite.image.url }}"
+                 alt="{{ actualite.titre }}">
+
+            {% endif %}
+
+            <h3>
+                {{ actualite.titre }}
+            </h3>
+
+            <p>
+                <p>
+    {{ actualite.contenu|truncatewords:30 }}
+</p>
+
+<a href="{% url 'detail_actualite' actualite.slug %}"
+   class="btn-project">
+
+    Lire plus
+
+</a>
+            </p>
+
+            <small>
+                Publié le
+                {{ actualite.date_publication }}
+            </small>
+
+        </div>
+
+        {% empty %}
+
+        <p>
+            Aucune actualité disponible pour le moment.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<div class="pagination">
+
+    {% if actualites.has_previous %}
+
+        <a href="?page={{ actualites.previous_page_number }}">
+            ← Précédent
+        </a>
+
+    {% endif %}
+
+    <span>
+        Page {{ actualites.number }}
+        sur
+        {{ actualites.paginator.num_pages }}
+    </span>
+
+    {% if actualites.has_next %}
+
+        <a href="?page={{ actualites.next_page_number }}">
+            Suivant →
+        </a>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
