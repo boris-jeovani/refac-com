@@ -1,12 +1,11 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block content %}
 
 <section class="hero">
 
-    <h1>
-        Actualités
-    </h1>
+    <h1>Actualités</h1>
 
     <p>
         Découvrez les dernières activités,
@@ -15,29 +14,32 @@
 
     <form method="GET" class="search-form">
 
-    <input type="text"
-           name="recherche"
-           placeholder="Rechercher une actualité..."
-           value="{{ recherche|default:'' }}">
+        <input type="text"
+               name="recherche"
+               placeholder="Rechercher une actualité..."
+               value="{{ recherche|default:'' }}">
 
-    <button type="submit">
+        <button type="submit">
+            Rechercher
+        </button>
 
-        Rechercher
-
-    </button>
-
-</form>
+    </form>
 
     <div class="actualites-container">
 
-    {% for actualite in actualites %}
+        {% for actualite in actualites %}
 
-    <div class="actualite-card">
+        <div class="actualite-card">
 
             {% if actualite.image %}
 
-            <img src="{{ actualite.image.url }}"
-                 alt="{{ actualite.titre }}">
+                <img src="{{ actualite.image.url }}"
+                     alt="{{ actualite.titre }}">
+
+            {% else %}
+
+                <img src="{% static 'images/default.jpg' %}"
+                     alt="Image par défaut">
 
             {% endif %}
 
@@ -46,21 +48,18 @@
             </h3>
 
             <p>
-                <p>
-    {{ actualite.contenu|truncatewords:30 }}
-</p>
-
-<a href="{% url 'detail_actualite' actualite.slug %}"
-   class="btn-actualite">
-
-    Lire plus
-
-</a>
+                {{ actualite.contenu|truncatewords:30 }}
             </p>
 
+            <a href="{% url 'detail_actualite' actualite.slug %}"
+               class="btn-actualite">
+
+                Lire plus
+
+            </a>
+
             <small>
-                Publié le
-                {{ actualite.date_publication }}
+                Publié le {{ actualite.date_publication }}
             </small>
 
         </div>
