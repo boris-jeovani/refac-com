@@ -7,7 +7,7 @@ venv/
 env/
 
 # Base de données
-db.sqlite3
+
 
 # Fichiers statiques
 staticfiles/
