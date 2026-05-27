@@ -18,7 +18,7 @@
     <input type="text"
            name="recherche"
            placeholder="Rechercher une actualité..."
-           value="{{ recherche }}">
+           value="{{ recherche|default:'' }}">
 
     <button type="submit">
 
@@ -28,11 +28,11 @@
 
 </form>
 
-    <div class="projects-container">
+    <div class="actualites-container">
 
-        {% for actualite in actualites %}
+    {% for actualite in actualites %}
 
-        <div class="project-card">
+    <div class="actualite-card">
 
             {% if actualite.image %}
 
@@ -51,7 +51,7 @@
 </p>
 
 <a href="{% url 'detail_actualite' actualite.slug %}"
-   class="btn-project">
+   class="btn-actualite">
 
     Lire plus
 

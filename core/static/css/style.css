@@ -1775,3 +1775,91 @@ PARTENAIRES
 
     transform: translateY(-3px);
 }
+
+/* ===== ACTUALITES ===== */
+
+.actualites-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.actualite-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.actualite-card:hover {
+    transform: translateY(-5px);
+}
+
+.actualite-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.actualite-card h3 {
+    padding: 15px 20px 10px;
+    color: #0c4a7d;
+    font-size: 24px;
+}
+
+.actualite-card p {
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+.actualite-card small {
+    display: block;
+    padding: 15px 20px;
+    color: gray;
+}
+
+.btn-actualite {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 20px;
+    background: #0c4a7d;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.btn-actualite:hover {
+    background: #08365a;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media screen and (max-width: 768px) {
+
+    .hero h1 {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .hero p {
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    .search-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-form input {
+        width: 90%;
+    }
+
+    .search-form button {
+        width: 90%;
+    }
+}
